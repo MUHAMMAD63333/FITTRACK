@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Root
+// Root
 struct ContentView: View {
     var body: some View {
         NavigationStack {
@@ -9,7 +9,7 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Login Screen
+// MARK: - Login
 struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
@@ -24,9 +24,11 @@ struct LoginView: View {
             TextField("Username", text: $username)
                 .textInputAutocapitalization(.never)
                 .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
 
             SecureField("Password", text: $password)
                 .textFieldStyle(.roundedBorder)
+                .padding(.horizontal)
 
             Button {
                 goHome = true
@@ -37,26 +39,14 @@ struct LoginView: View {
                     .padding()
                     .background(.blue)
                     .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             }
 
             NavigationLink("Create an account", destination: SignUpView())
-                .font(.footnote)
-                .padding(.top, 8)
+                .padding(.top, 4)
+
+            NavigationLink("", destination: DashboardView(), isActive: $goHome)
+                .hidden()
         }
-        .padding(.horizontal)
-
-        // Hidden Navigation to Dashboard
-        .background(
-            NavigationLink("", isActive: $goHome) {
-                DashboardView()
-            }
-            .opacity(0)
-        )
     }
-}
-
-// MARK: - Preview
-#Preview {
-    ContentView()
 }

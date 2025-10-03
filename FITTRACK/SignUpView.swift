@@ -13,13 +13,9 @@ struct SignUpView: View {
             }
 
             Button("Sign Up") {
-                // TODO: implement
+                // TODO: Add sign-up action
             }
         }
         .navigationTitle("Sign Up")
     }
-}
-
-#Preview {
-    NavigationStack { SignUpView() }
 }

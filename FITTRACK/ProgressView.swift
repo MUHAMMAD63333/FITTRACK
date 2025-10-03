@@ -1,13 +1,17 @@
 import SwiftUI
 
 struct ProgressViewScreen: View {
-    @EnvironmentObject var store: FitTrackStore
+    @AppStorage("goal_steps") var goalSteps = 10000
+
+    let todaySteps = 3500
+
     var body: some View {
-        VStack(spacing: 12) {
-            Text("Progress Screen").font(.largeTitle).padding(.bottom, 8)
-            Text("Steps: \(store.steps) / \(store.stepGoal)")
-            Text("Calories: \(store.calories) / \(store.calorieGoal)")
-            Text("Workout: \(store.workoutMinutes) / \(store.workoutMinutesGoal) min")
+        VStack(spacing: 16) {
+            Text("Progress")
+                .font(.largeTitle)
+                .padding(.bottom, 8)
+
+            Text("Today: \(todaySteps) / \(goalSteps) steps")
         }
         .padding()
     }
